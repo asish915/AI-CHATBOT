@@ -101,6 +101,6 @@ If you have questions or encounter issues:
 
 ---
 
-**Happy Coding!** 🤖
+**Created by: Asish Sarangi**
 
 For more information, visit the [repository](https://github.com/asish915/AI-CHATBOT).
