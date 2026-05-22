@@ -4,7 +4,7 @@ A Jupyter Notebook-based project for building and exploring AI-powered chatbot a
 
 ## Overview
 
-This repository contains Jupyter Notebook implementations for creating and experimenting with AI chatbot systems. Whether you're exploring natural language processing, machine learning models, or conversational AI, this project provides a hands-on environment for development and learning.
+This repository contains Jupyter Notebook implementations for creating and experimenting with AI-POWERED CHATBOT systems.
 
 ## 📋 Features
 
