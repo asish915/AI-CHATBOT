@@ -1,106 +1,79 @@
-# AI-CHATBOT
+# 🤖 AI-Powered FAQ Chatbot
 
-A Jupyter Notebook-based project for building and exploring AI-powered chatbot applications.
+A smart, interactive FAQ chatbot that uses Natural Language Processing (NLP) to understand user queries and deliver relevant answers. Instead of relying on rigid keyword matching, this bot uses **semantic search** to understand the *meaning* behind a user's question, even if they phrase it differently than the pre-programmed knowledge base.
 
-## Overview
+## ✨ Features
 
-This repository contains Jupyter Notebook implementations for creating and experimenting with AI-POWERED CHATBOT systems.
+* **🧠 Semantic Search:** Uses Hugging Face's `sentence-transformers` (`all-MiniLM-L6-v2`) to convert text into embeddings and find the best match using cosine similarity.
+* **📋 Interactive Menu:** Users can type natural language queries or simply select a topic by its number from an automatically generated menu.
+* **🗄️ SQLite Logging:** Automatically logs every interaction (session ID, user message, bot response, confidence score, and timestamp) to a local SQLite database (`faq_chatbot_logs.db`) for future analytics.
+* **👋 Greeting & Exit Handling:** Built-in logic to gracefully handle common greetings and exit commands.
+* **🔄 Session Tracking:** Generates a unique UUID for every chat session to keep track of user flows.
+* **📓 Notebook Ready:** Utilizes `IPython.display` to gracefully handle keyboard interrupts and clear outputs, making it perfect for Jupyter Notebooks or Google Colab.
 
-## 📋 Features
+## 🛠️ Tech Stack
 
-- **Interactive Development**: Jupyter Notebook environment for iterative development
-- **AI/ML Integration**: Support for various machine learning and NLP libraries
-- **Experimentation**: Easy-to-use notebooks for prototyping chatbot functionality
-- **Documentation**: Well-commented code for learning and reference
+* **Python 3**
+* **[Sentence-Transformers](https://sbert.net/):** For generating state-of-the-art text embeddings.
+* **SQLite3:** Built-in Python library for lightweight database logging.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Python 3.7+
-- Jupyter Notebook
-- pip or conda package manager
+You will need Python installed on your machine. Install the required dependencies using `pip`:
 
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/asish915/AI-CHATBOT.git
-   cd AI-CHATBOT
-   ```
-
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install jupyter
-   ```
-
-4. **Start Jupyter Notebook**
-   ```bash
-   jupyter notebook
-   ```
-
-5. **Open the notebooks** in your browser and start exploring!
-
-## 📁 Project Structure
-
-```
-AI-CHATBOT/
-├── README.md
-├── requirements.txt
-└── notebooks/
-    └── [Your notebook files here]
-```
-
-## 🔧 Common Dependencies
-
-Depending on your chatbot implementation, you may need:
-
-```
-jupyter>=6.0
-numpy
-pandas
-scikit-learn
-nltk
-transformers
-tensorflow or torch
-requests
-```
-
-For a specific requirements file, run:
 ```bash
-pip freeze > requirements.txt
+pip install sentence-transformers ipython
 ```
 
-## 💡 Usage
+### Running the Chatbot
 
-Open any Jupyter notebook and run the cells sequentially. Each notebook is designed to be self-contained with explanations and code examples.
+1. Clone this repository or download the Python script.
+2. Run the script in your terminal or a Jupyter Notebook environment.
 
-## 🤝 Contributing
+```bash
+python chatbot.py
+```
 
-Contributions are welcome! Please feel free to:
-- Submit issues for bugs or feature requests
-- Create pull requests with improvements
-- Share ideas and suggestions
+**Note:** The first time you run the script, it will take a few seconds to download the `all-MiniLM-L6-v2` model from Hugging Face.
 
-## 📝 License
+## ⚙️ Customizing the Knowledge Base
 
-This project is open source. See the LICENSE file for details.
+You can easily swap out the default e-commerce FAQs with your own data. Just locate the `FAQ_DATA` list in the script and update the dictionaries:
 
-## 🙋 Support
+```python
+FAQ_DATA = [
+    {
+        "topic": "Your Topic Name", 
+        "question": "The ideal question format?", 
+        "answer": "The answer your bot will provide."
+    },
+    # Add as many as you need!
+]
+```
 
-If you have questions or encounter issues:
-1. Check the notebook documentation
-2. Review the code comments
-3. Open an issue in the repository
+The chatbot will automatically recalculate the embeddings and update the terminal menu based on your new entries.
 
----
+## 📊 Viewing the Logs
 
-**Created by: Asish Sarangi**
+Every time a user interacts with the bot, the system logs the conversation. You can view these logs by querying the local database:
 
-For more information, visit the [repository](https://github.com/asish915/AI-CHATBOT).
+```bash
+sqlite3 faq_chatbot_logs.db "SELECT * FROM interaction_logs;"
+```
+
+Or use any GUI SQLite viewer like [DB Browser for SQLite](https://sqlitebrowser.org/).
+
+## 🎛️ Tweaking the AI Confidence
+
+If the bot is returning answers for completely unrelated questions, you can increase the `CONFIDENCE_THRESHOLD`. If it's failing to answer valid questions, you can lower it.
+
+```python
+# Default is 0.40
+CONFIDENCE_THRESHOLD = 0.50 
+```
+
+## 📜 License
+
+This project is open-source and available under the MIT License. Feel free to fork, modify, and use it in your own projects!
