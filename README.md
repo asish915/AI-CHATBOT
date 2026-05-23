@@ -1,12 +1,12 @@
 # 🤖 AI-Powered FAQ Chatbot
 
-A smart, interactive FAQ chatbot that uses Natural Language Processing (NLP) to understand user queries and deliver relevant answers. Instead of relying on rigid keyword matching, this bot uses **semantic search** to understand the *meaning* behind a user's question, even if they phrase it differently than the pre-programmed knowledge base.
+A smart, interactive FAQ chatbot that uses Natural Language Processing (NLP) to understand user queries and deliver relevant answers. Instead of relying on rigid keyword matching, this bot uses **semantic similarity** to match user input with the most relevant FAQ answers.
 
 ## ✨ Features
 
 * **🧠 Semantic Search:** Uses Hugging Face's `sentence-transformers` (`all-MiniLM-L6-v2`) to convert text into embeddings and find the best match using cosine similarity.
 * **📋 Interactive Menu:** Users can type natural language queries or simply select a topic by its number from an automatically generated menu.
-* **🗄️ SQLite Logging:** Automatically logs every interaction (session ID, user message, bot response, confidence score, and timestamp) to a local SQLite database (`faq_chatbot_logs.db`) for future analytics.
+* **🗄️ SQLite Logging:** Automatically logs every interaction (session ID, user message, bot response, confidence score, and timestamp) to a local SQLite database (`faq_chatbot_logs.db`) for future analysis and debugging.
 * **👋 Greeting & Exit Handling:** Built-in logic to gracefully handle common greetings and exit commands.
 * **🔄 Session Tracking:** Generates a unique UUID for every chat session to keep track of user flows.
 * **📓 Notebook Ready:** Utilizes `IPython.display` to gracefully handle keyboard interrupts and clear outputs, making it perfect for Jupyter Notebooks or Google Colab.
@@ -73,6 +73,10 @@ If the bot is returning answers for completely unrelated questions, you can incr
 # Default is 0.40
 CONFIDENCE_THRESHOLD = 0.50 
 ```
+
+## 👤 Author
+
+**Asish** - [GitHub Profile](https://github.com/asish915)
 
 ## 📜 License
 
