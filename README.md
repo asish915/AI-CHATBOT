@@ -76,7 +76,7 @@ CONFIDENCE_THRESHOLD = 0.50
 
 ## 👤 Author
 
-**Asish** - [GitHub Profile](https://github.com/asish915)
+**Asish Sarangi** - [GitHub Profile](https://github.com/asish915)
 
 ## 📜 License
 
